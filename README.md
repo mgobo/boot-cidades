@@ -1,6 +1,7 @@
 # boot-cidades
 
-# Completar o arquivo application.properties com a senha do banco de dados.
-# O aplicativo utiliza postgres.
+Procedimentos para executar o app:
 
-# Aplicativo desenvolvido utilizando SpringBoot
+1 - Completar o arquivo application.properties com a senha do banco de dados.
+2 - Instalar postgres (O aplicativo utiliza postgres).
+3 - Para compilação e preciso ter o STS (Spring Tool Suite), aplicativo desenvolvido utilizando SpringBoot.
