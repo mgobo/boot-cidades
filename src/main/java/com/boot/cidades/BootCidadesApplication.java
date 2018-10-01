@@ -17,11 +17,17 @@ import java.util.Properties;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.support.SpringBootServletInitializer;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
 
-@SpringBootApplication
+@Configuration
+@ComponentScan
 @EnableAutoConfiguration
-public class BootCidadesApplication {	
+@SpringBootApplication
+public class BootCidadesApplication extends SpringBootServletInitializer{	
 	
 	public static void main(String[] args) throws SQLException {
 		String sql			  = "INSERT INTO CIDADES "
@@ -116,4 +122,12 @@ public class BootCidadesApplication {
 		}	
 		SpringApplication.run(BootCidadesApplication.class, args);
 	}
+	
+	@Override
+	protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
+		System.out.println("Deploy app...");
+		return builder.sources(APPLICATION_CLASS);
+	}	
+	
+	private static Class<BootCidadesApplication> APPLICATION_CLASS = BootCidadesApplication.class;
 }
