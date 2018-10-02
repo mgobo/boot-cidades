@@ -16,14 +16,64 @@ public class CidadesCustomDao implements CidadesCustomImpl{
 	
 	@Override
 	public Long totalCidadesPorDataSet(String columnName) {
-		TypedQuery<Long> tQuery = em.createQuery(String.format(dynamic, "c."+columnName),Long.class);		
+		String[] sQuery = columnName.split("&");
+		String query    = "";
+		if(sQuery.length == 1) {
+			query = query(sQuery);
+		}else {
+			query = query(sQuery);
+		}		
+		TypedQuery<Long> tQuery = em.createQuery(query,Long.class);		
 		Long result = tQuery.getSingleResult();
 		if(result != null) {
 			return result;			
 		}				
 		return 0l;
-	}
+	}	
 
+	public String query(String[] query) {
+		String replace = "";
+		boolean first = false;
+		for(String q : query) {			
+			String[] scn = q.split("=");
+			switch(scn[0]) {
+				case "ibgeCidade":
+					replace = replace + (!first ? "c.ibgeCidade = "+scn[1] : " AND c.ibgeCidade = "+scn[1]);						
+					break;
+				case "uf":
+					replace = replace + (!first ? "c.uf = '"+scn[1]+"'" : " AND c.uf = '"+scn[1]+"'");
+					break;						
+				case "name":
+					replace = replace + (!first ? "c.name = '"+scn[1]+"'" : " AND c.name = '"+scn[1]+"'");
+				break;					
+				case "capital":
+					replace = replace + (!first ? "c.capital = "+scn[1]+"" : " AND c.capital = '"+scn[1]+"'");
+					break;					
+				case "lon":
+					replace = replace + (!first ? "c.lon = "+scn[1]+"" : " AND c.lon = '"+scn[1]+"'");
+				break;					
+				case "lat":
+					replace = replace + (!first ? "c.lat = "+scn[1]+"" : " AND c.lat = '"+scn[1]+"'");
+				break;					
+				case "no_accents":
+					replace = replace + (!first ? "c.no_accents = '"+scn[1]+"'" : " AND c.no_accents = '"+scn[1]+"'");
+					break;						
+				case "alternative_names":
+					replace = replace + (!first ? "c.alternative_names = '"+scn[1]+"'" : " AND c.alternative_names = '"+scn[1]+"'");
+					break;
+				case "microregion":
+					replace = replace + (!first ? "c.microregion = '"+scn[1]+"'" : " AND c.microregion = '"+scn[1]+"'");
+					break;
+				case "mesoregion":
+					replace = replace + (!first ? "c.mesoregion = '"+scn[1]+"'" : " AND c.mesoregion = '"+scn[1]+"'");
+					break;
+				default : break;
+			}
+			first = true;
+		}
+		return String.format(dynamic, replace);
+	}
+	
 	@Override
 	public double distance(double lat1, double lon1, double lat2, double lon2) {
 		double theta = lon1 - lon2;
