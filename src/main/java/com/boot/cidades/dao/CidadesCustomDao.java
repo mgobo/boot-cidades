@@ -47,13 +47,13 @@ public class CidadesCustomDao implements CidadesCustomImpl{
 					replace = replace + (!first ? "c.name = '"+scn[1]+"'" : " AND c.name = '"+scn[1]+"'");
 				break;					
 				case "capital":
-					replace = replace + (!first ? "c.capital = "+scn[1]+"" : " AND c.capital = '"+scn[1]+"'");
+					replace = replace + (!first ? "c.capital = "+scn[1]+"" : " AND c.capital = "+scn[1]);
 					break;					
 				case "lon":
-					replace = replace + (!first ? "c.lon = "+scn[1]+"" : " AND c.lon = '"+scn[1]+"'");
+					replace = replace + (!first ? "c.lon = "+scn[1] : " AND c.lon = "+scn[1]);
 				break;					
 				case "lat":
-					replace = replace + (!first ? "c.lat = "+scn[1]+"" : " AND c.lat = '"+scn[1]+"'");
+					replace = replace + (!first ? "c.lat = "+scn[1] : " AND c.lat = "+scn[1]);
 				break;					
 				case "no_accents":
 					replace = replace + (!first ? "c.no_accents = '"+scn[1]+"'" : " AND c.no_accents = '"+scn[1]+"'");
