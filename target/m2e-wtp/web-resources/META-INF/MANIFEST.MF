@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Implementation-Title: boot-cidades
+Implementation-Version: 1.0-SNAPSHOT
+Built-By: mateusgobo
+Implementation-Vendor-Id: com.boot.cidades
+Build-Jdk: 1.8.0_171
+Implementation-URL: http://projects.spring.io/spring-boot/boot-cidades
+ /
+Created-By: Maven Integration for Eclipse
+Implementation-Vendor: Pivotal Software, Inc.
+

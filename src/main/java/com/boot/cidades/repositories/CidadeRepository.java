@@ -29,6 +29,5 @@ public interface CidadeRepository extends JpaRepository<Cidades, Long> {
 	List<Cidades> cidadesPorEstadoLike(@Param("uf") String uf);
 	
 	@Query(value="select c from Cidades c where c.uf = :uf order by c.name")
-	List<Cidades> cidadesPorEstado(@Param("uf") String uf);	
-				
+	List<Cidades> cidadesPorEstado(@Param("uf") String uf);						
 }

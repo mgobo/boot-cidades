@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="layout">
+<head>
+<meta charset="UTF-8">
+<title>Cidades</title>
+</head>
+<body>
+	<h1 layout:fragment="header">Lista de Cidades</h1>
+	<div layout:fragment="content" class="container">
+		<a href="form.html" th:href="@{/cidades/new}">Criar Cidade</a> | 
+		<a th:href="@{'/'}">Voltar</a>		
+		<table class="table table-bordered table-striped">
+			<thead>
+				<tr>
+					<td>Ibge Cidade</td>
+					<td>UF</td>
+					<td>Nome</td>				
+					<td>Latitude</td>
+					<td>Longitude</td>
+					<td></td>					
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:if="${cidades.empty}">
+					<td colspan="5">NENHUM REGISTRO DE CIDADE</td>
+				</tr>							
+				<tr th:each="cidade : ${cidades}">
+					<td><a th:href="@{'/cidades/detail/'+${cidade.ibgeCidade}}" th:text="${cidade.ibgeCidade}"></a></td>
+					<td th:text="${cidade.uf}"></td>
+					<td th:text="${cidade.name}"></td>					
+					<td th:text="${cidade.lat}"></td>
+					<td th:text="${cidade.lon}"></td>
+					<td><a th:href="@{'/cidades/remove/'+${cidade.ibgeCidade}}" th:text="Excluir"></a></td>
+				</tr>
+			</tbody>
+		</table>
+		<a th:href="@{'/'}">Voltar</a>
+	</div>
+</body>
+</html>

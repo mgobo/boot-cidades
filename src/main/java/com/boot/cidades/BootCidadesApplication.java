@@ -127,7 +127,7 @@ public class BootCidadesApplication extends SpringBootServletInitializer{
 	protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
 		System.out.println("Deploy app...");
 		return builder.sources(APPLICATION_CLASS);
-	}	
+	}			
 	
 	private static Class<BootCidadesApplication> APPLICATION_CLASS = BootCidadesApplication.class;
 }
